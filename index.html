@@ -576,40 +576,6 @@
             `;
         }
         
-        // Добавление отзыва
-        function addReview() {
-            const title = document.getElementById('review-title').value.trim() || "Отличная работа!";
-            const text = document.getElementById('review-text').value.trim() || "Спасибо команде!";
-            const fileInput = document.getElementById('review-photo');
-            
-            let photoHTML = '';
-            if (fileInput.files && fileInput.files[0]) {
-                const photoURL = URL.createObjectURL(fileInput.files[0]);
-                photoHTML = `<img src="${photoURL}" class="mt-6 w-14 h-14 rounded-2xl object-cover shadow-inner">`;
-            }
-            
-            const container = document.getElementById('reviews-container');
-            const newReview = document.createElement('div');
-            newReview.className = "bg-white/10 backdrop-blur p-8 rounded-3xl animate-fade-in";
-            newReview.innerHTML = `
-                <div class="flex gap-1 text-[#ffcc33] mb-4">★★★★★</div>
-                <h3 class="font-bold text-xl mb-3">${title}</h3>
-                <p class="text-gray-300">${text}</p>
-                ${photoHTML}
-                <p class="font-semibold mt-8 flex items-center gap-2">
-                    <span class="text-[#ffcc33]">Вы</span> 
-                    <span class="text-xs text-gray-400">• только что</span>
-                </p>
-            `;
-            container.prepend(newReview);
-            
-            document.getElementById('review-title').value = '';
-            document.getElementById('review-text').value = '';
-            fileInput.value = '';
-            
-            alert('✅ Спасибо! Ваш отзыв с фото опубликован и виден всем.');
-        }
-        
         // Мобильное меню
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
