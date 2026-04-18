@@ -498,29 +498,12 @@
                         <img src="https://picsum.photos/id/1011/48/48" alt="Татьяна" class="w-10 h-10 rounded-2xl object-cover">
                         <div>
                             <p class="font-semibold">Татьяна Попова</p>
-                            <p class="text-xs text-gray-400">Тюльган, 5 марта 2026</p>
+                            <p class="text-xs text-gray-400">Ермолаево, 5 марта 2026</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Форма отзыва -->
-            <div class="mt-16 max-w-2xl mx-auto bg-white/10 p-10 rounded-3xl">
-                <h3 class="text-2xl font-bold text-center mb-8 text-[#ffcc33]">Оставить отзыв</h3>
-                <input id="review-title" type="text" placeholder="Заголовок отзыва" class="w-full bg-[#1e3a5c] rounded-3xl px-6 py-4 mb-4">
-                <textarea id="review-text" rows="4" placeholder="Ваш отзыв..." class="w-full bg-[#1e3a5c] rounded-3xl px-6 py-4 mb-4"></textarea>
-                
-                <label class="block text-sm mb-2 text-gray-400 cursor-pointer flex items-center gap-2 hover:text-[#ffcc33]">
-                    <i class="fas fa-camera"></i>
-                    <span>Добавить фото с телефона</span>
-                    <input id="review-photo" type="file" accept="image/*" class="hidden">
-                </label>
-                
-                <button onclick="addReview()" class="w-full py-6 bg-[#ffcc33] text-black rounded-3xl font-bold text-xl mt-4">ОПУБЛИКОВАТЬ ОТЗЫВ</button>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ -->
     <section id="faq" class="py-20 bg-[#112b4a]">
         <div class="max-w-4xl mx-auto px-6">
@@ -575,8 +558,8 @@
             const modules = parseFloat(document.getElementById('modules').value) || 0;
             
             const cableMeters = area * 4;
-            const cableCost = cableMeters * 140;
-            const lightCost = lights * 600;
+            const cableCost = cableMeters * 180;
+            const lightCost = lights * 700;
             const pointCost = 700;
             const pointsCost = (sockets * pointCost) + (switches * pointCost);
             const shieldBase = 4000;
