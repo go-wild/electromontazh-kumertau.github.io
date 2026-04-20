@@ -111,24 +111,23 @@
             animation: glow 2s infinite ease-in-out;
         }
         
-        /* УЛУЧШЕННАЯ АДАПТИВНОСТЬ (только дополнения, без изменений структуры) */
+        /* УЛУЧШЕННАЯ АДАПТИВНОСТЬ */
         @media (max-width: 768px) {
-            .hero-bg { background-attachment: scroll; }
-            .hero-title { font-size: 2.4rem !important; line-height: 1.1 !important; }
-            .flex-wrap { flex-direction: column; gap: 1rem; }
-            .service-card { padding: 1.25rem; }
-            .input-mobile { padding: 1.25rem 1.5rem !important; font-size: 1.125rem !important; }
+            .hero-title { font-size: 2.35rem !important; line-height: 1.05 !important; }
+            .service-card { padding: 1.1rem !important; }
+            .btn { padding: 14px 24px !important; font-size: 1.05rem !important; }
+            .flex-wrap { flex-direction: column; gap: 12px; }
+            input { padding: 16px 20px !important; font-size: 1.1rem !important; }
         }
-        
+       
         @media (orientation: landscape) and (max-width: 1024px) {
-            .hero-title { font-size: 2.8rem !important; }
+            .hero-title { font-size: 2.7rem !important; }
         }
-        
+       
         @media (min-width: 768px) and (max-width: 1024px) {
-            .hero-title { font-size: 3.5rem !important; }
-            .service-card { padding: 1.75rem; }
+            .service-card { padding: 1.6rem; }
         }
-        
+       
         button, a { touch-action: manipulation; }
     </style>
 </head>
