@@ -7,14 +7,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
         :root {
             --accent: #ffcc33;
         }
         
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
         }
         
         .header {
@@ -65,6 +81,8 @@
         
         .scroll-top {
             transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
         }
         
         .mobile-menu {
@@ -79,6 +97,7 @@
         details summary {
             cursor: pointer;
             position: relative;
+            padding-right: 2.6rem;
         }
         
         details summary::after {
@@ -111,21 +130,265 @@
             animation: glow 2s infinite ease-in-out;
         }
         
+        .hero-bg > .max-w-7xl,
+        .hero-bg .space-y-8 {
+            min-width: 0;
+        }
+
+        .hero-title {
+            overflow-wrap: normal;
+            text-wrap: balance;
+        }
+
+        .hero-actions > a {
+            min-width: min(100%, 17rem);
+        }
+
         /* УЛУЧШЕННАЯ АДАПТИВНОСТЬ */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.35rem !important; line-height: 1.05 !important; }
-            .service-card { padding: 1.1rem !important; }
-            .btn { padding: 14px 24px !important; font-size: 1.05rem !important; }
-            .flex-wrap { flex-direction: column; gap: 12px; }
-            input { padding: 16px 20px !important; font-size: 1.1rem !important; }
+        @media (max-width: 1199px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+
+            .mobile-menu {
+                max-height: calc(100vh - 4.5rem);
+                overflow-y: auto;
+                overscroll-behavior: contain;
+            }
         }
-       
-        @media (orientation: landscape) and (max-width: 1024px) {
-            .hero-title { font-size: 2.7rem !important; }
+
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .hero-title {
+                font-size: 2.55rem !important;
+                line-height: 1.02 !important;
+            }
         }
-       
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .service-card { padding: 1.6rem; }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .service-card {
+                padding: 1.45rem !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .max-w-7xl,
+            .max-w-6xl,
+            .max-w-4xl {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .header h1 {
+                font-size: 1.2rem !important;
+                line-height: 1.05 !important;
+            }
+
+            .header p {
+                font-size: 0.68rem !important;
+            }
+
+            .hero-bg {
+                min-height: auto !important;
+                align-items: flex-start !important;
+                padding-top: 1.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+
+            .hero-bg .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 1.15rem !important;
+            }
+
+            .hero-bg .space-y-8 {
+                width: min(100%, calc(100vw - 2rem));
+                max-width: calc(100vw - 2rem);
+            }
+
+            .hero-bg .space-y-8 > * {
+                min-width: 0;
+                max-width: calc(100vw - 2rem);
+            }
+
+            .hero-title {
+                width: calc(100vw - 2rem);
+                font-size: clamp(1.55rem, 7.3vw, 1.84rem) !important;
+                line-height: 1.03 !important;
+                letter-spacing: 0 !important;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-title .mobile-title-line {
+                display: block;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-title br {
+                display: none;
+            }
+
+            .hero-bg h2 {
+                width: calc(100vw - 2rem);
+                font-size: clamp(1.25rem, 5.8vw, 1.45rem) !important;
+                line-height: 1.15 !important;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-bg p {
+                width: calc(100vw - 2rem);
+                font-size: 1rem !important;
+                line-height: 1.55 !important;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-badge {
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                align-items: center;
+                width: calc(100vw - 2rem);
+                max-width: calc(100vw - 2rem);
+                white-space: normal;
+                text-align: center;
+                padding-left: 0.9rem !important;
+                padding-right: 0.9rem !important;
+            }
+
+            .hero-badge span {
+                min-width: 0;
+                overflow-wrap: break-word;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                gap: 0.75rem !important;
+            }
+
+            .hero-actions > a {
+                width: calc(100vw - 2rem);
+                padding: 0.95rem 1rem !important;
+                font-size: 1rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .hero-stats {
+                align-items: flex-start !important;
+                flex-direction: column;
+                gap: 0.75rem !important;
+            }
+
+            .free-project .flex {
+                flex-direction: column;
+                gap: 0.75rem !important;
+            }
+
+            .free-project .font-bold {
+                width: calc(100vw - 2rem);
+                max-width: calc(100vw - 2rem);
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 1rem !important;
+                line-height: 1.2 !important;
+                overflow-wrap: anywhere;
+            }
+
+            section {
+                padding-top: 3.25rem !important;
+                padding-bottom: 3.25rem !important;
+            }
+
+            h2,
+            .section-header {
+                font-size: clamp(1.65rem, 7vw, 2rem) !important;
+                line-height: 1.15 !important;
+            }
+
+            .service-card {
+                padding: 1rem !important;
+            }
+
+            input {
+                padding: 0.95rem 1rem !important;
+                font-size: 1.05rem !important;
+                border-radius: 1rem !important;
+            }
+
+            #calculator .bg-\[\#0a1f3d\] {
+                padding: 1rem !important;
+                border-radius: 1.25rem !important;
+            }
+
+            #calculator button {
+                margin-top: 1.5rem !important;
+                padding: 1rem !important;
+                font-size: 1rem !important;
+                line-height: 1.2 !important;
+            }
+
+            #result {
+                font-size: 2rem !important;
+                min-height: 3rem !important;
+                overflow-wrap: anywhere;
+            }
+
+            #result .text-6xl {
+                font-size: clamp(2rem, 12vw, 3rem) !important;
+                line-height: 1.05 !important;
+            }
+
+            details {
+                padding: 1.25rem !important;
+                border-radius: 1.25rem !important;
+            }
+
+            details summary {
+                font-size: 1rem !important;
+                line-height: 1.35 !important;
+                padding-right: 2rem;
+            }
+
+            details summary::after {
+                right: 0;
+            }
+
+            .pulsate {
+                width: 3.25rem !important;
+                height: 3.25rem !important;
+                right: 1rem !important;
+                bottom: 1rem !important;
+                font-size: 1.4rem !important;
+            }
+
+            .scroll-top {
+                width: 2.75rem !important;
+                height: 2.75rem !important;
+                left: 1rem !important;
+                bottom: 1rem !important;
+                font-size: 1.35rem !important;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .services-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: 1023px) and (max-height: 520px) {
+            .hero-bg {
+                padding-top: 1rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .hero-title {
+                font-size: clamp(1.65rem, 5vw, 2.2rem) !important;
+            }
+
+            .hero-bg .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 0.8rem !important;
+            }
+
+            .mobile-menu {
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+            }
         }
        
         button, a { touch-action: manipulation; }
@@ -147,7 +410,7 @@
                 </div>
 
                 <!-- НАВИГАЦИЯ ДЕСКТОП -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <nav class="hidden xl:flex items-center gap-5 2xl:gap-8 text-sm font-medium">
                     <a href="#services" class="nav-link flex items-center gap-1 hover:text-[#ffcc33]">
                         <i class="fas fa-tools text-[#ffcc33]"></i>
                         УСЛУГИ
@@ -166,7 +429,7 @@
                     </a>
                     
                     <!-- Соцсети -->
-                    <div class="flex items-center gap-5 pl-6 border-l border-[#ffcc33]/30">
+                    <div class="flex items-center gap-4 2xl:gap-5 pl-4 2xl:pl-6 border-l border-[#ffcc33]/30">
                         <a href="https://t.me/goowild" target="_blank" class="social-icon text-2xl hover:text-[#ffcc33] transition-colors"><i class="fab fa-telegram"></i></a>
                         <a href="https://vk.com/nobrakes_noproblem" target="_blank" class="social-icon text-2xl hover:text-[#ffcc33] transition-colors"><i class="fab fa-vk"></i></a>
                         <a href="https://www.instagram.com/go___wild?igsh=bDZrdThpdzd1ZmIz&utm_source=qr" target="_blank" class="social-icon text-2xl hover:text-[#ffcc33] transition-colors"><i class="fab fa-instagram"></i></a>
@@ -176,19 +439,19 @@
                 <!-- ПРАВАЯ ЧАСТЬ -->
                 <div class="flex items-center gap-4">
                     <a href="tel:+79173847891" 
-                       class="hidden md:flex items-center gap-2 bg-[#ffcc33] text-black px-6 py-2.5 rounded-3xl font-semibold text-sm hover:bg-white transition-all">
+                       class="hidden xl:flex items-center gap-2 bg-[#ffcc33] text-black px-4 2xl:px-6 py-2.5 rounded-3xl font-semibold text-sm hover:bg-white transition-all">
                         <i class="fas fa-phone-volume"></i>
                         +7 917 384-78-91
                     </a>
                     
-                    <button id="hamburger" onclick="toggleMobileMenu()" class="md:hidden text-3xl text-[#ffcc33] focus:outline-none">
+                    <button id="hamburger" onclick="toggleMobileMenu()" class="xl:hidden text-3xl text-[#ffcc33] focus:outline-none" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
             
             <!-- МОБИЛЬНОЕ МЕНЮ -->
-            <div id="mobile-menu" class="hidden md:hidden mobile-menu bg-[#112b4a] border-t border-[#ffcc33]/20 py-6 px-6 rounded-b-3xl mt-1">
+            <div id="mobile-menu" class="hidden xl:hidden mobile-menu bg-[#112b4a] border-t border-[#ffcc33]/20 py-6 px-6 rounded-b-3xl mt-1" aria-hidden="true">
                 <div class="flex flex-col gap-6 text-lg font-medium">
                     <a href="#services" onclick="toggleMobileMenu()" class="flex items-center gap-3 py-3 border-b border-white/10">
                         <i class="fas fa-tools w-6 text-[#ffcc33]"></i>
@@ -225,15 +488,15 @@
 
     <!-- HERO -->
     <section class="hero-bg min-h-screen flex items-center pt-16">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 bg-white/10 text-[#ffcc33] text-sm font-medium px-5 py-2 rounded-3xl border border-[#ffcc33]/30">
+                <div class="hero-badge inline-flex items-center gap-2 bg-white/10 text-[#ffcc33] text-sm font-medium px-5 py-2 rounded-3xl border border-[#ffcc33]/30">
                     <i class="fas fa-truck-fast"></i>
-                    ВЫЕЗД ПО КУМЕРТАУ 24/7 • ОТ 20 МИНУТ
+                    <span>ВЫЕЗД ПО КУМЕРТАУ 24/7 • ОТ 20 МИНУТ</span>
                 </div>
                 
                 <h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-none hero-title">
-                    ЭЛЕКТРОМОНТАЖНЫЕ РАБОТЫ<br>В КУМЕРТАУ
+                    <span class="mobile-title-line">ЭЛЕКТРОМОНТАЖНЫЕ</span> <span class="mobile-title-line">РАБОТЫ</span><br>В КУМЕРТАУ
                 </h1>
                 <h2 class="text-3xl md:text-4xl font-semibold text-[#ffcc33]">и Республике Башкортостан</h2>
                 
@@ -242,7 +505,7 @@
                     Более 10 лет опыта в жилых и коммерческих объектах
                 </p>
                 
-                <div class="flex flex-wrap gap-4">
+                <div class="hero-actions flex flex-wrap gap-4">
                     <a href="#calculator" 
                        onclick="document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' }); return false;"
                        class="flex-1 md:flex-none bg-[#ffcc33] text-black px-10 py-5 rounded-3xl text-xl font-bold text-center hover:bg-white transition-all flex items-center justify-center gap-3">
@@ -257,7 +520,7 @@
                     </a>
                 </div>
                 
-                <div class="flex items-center gap-8 text-sm">
+                <div class="hero-stats flex items-center gap-8 text-sm">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-shield-alt text-2xl text-[#ffcc33]"></i>
                         <div>
@@ -276,11 +539,11 @@
             </div>
             
             <!-- КВАДРАТНОЕ ОКОШКО СПРАВА -->
-            <div class="hidden md:flex justify-end">
+            <div class="hidden lg:flex justify-end">
                 <div class="relative">
                     <img src="щит.jpg" 
                          alt="Электрощит с современной автоматикой"
-                         class="rounded-3xl shadow-2xl shadow-[#ffcc33]/20 max-h-[520px] object-cover">
+                         class="w-full max-w-[430px] xl:max-w-[520px] rounded-3xl shadow-2xl shadow-[#ffcc33]/20 max-h-[520px] object-cover">
                     <div class="absolute -bottom-6 -left-6 bg-[#112b4a] text-white px-6 py-4 rounded-3xl shadow-xl flex items-center gap-4">
                         <div class="text-5xl">10+</div>
                         <div class="text-sm leading-tight">
@@ -325,7 +588,7 @@
             </div>
             <h2 class="text-4xl font-bold text-center mb-12">Преимущества профессионального электромонтажа</h2>
             
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-8">
                 <div class="bg-white/5 p-8 rounded-3xl text-center service-card">
                     <i class="fas fa-clock text-5xl text-[#ffcc33] mb-6"></i>
                     <h3 class="text-2xl font-semibold mb-2">10+ лет опыта</h3>
@@ -363,7 +626,7 @@
                 </a>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="services-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="service-card bg-white/10 p-6 rounded-3xl text-center">
                     <i class="fas fa-lightbulb text-4xl text-[#ffcc33] mb-4"></i>
                     <h3 class="font-semibold text-lg">Установка люстр и светильников</h3>
@@ -409,7 +672,7 @@
             <div class="mt-16 flex justify-center">
                 <img src="дом.jpg" 
                      alt="Красивый дом с вечерней подсветкой"
-                     class="rounded-3xl shadow-2xl max-w-full md:max-w-4xl opacity-90">
+                     class="w-full max-w-4xl rounded-3xl shadow-2xl opacity-90">
             </div>
         </div>
     </section>
@@ -462,7 +725,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="section-header text-4xl font-bold text-center mb-12">Что говорят наши клиенты</h2>
             
-            <div class="grid md:grid-cols-3 gap-8" id="reviews-container">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="reviews-container">
                 <div class="bg-white/10 backdrop-blur p-8 rounded-3xl">
                     <div class="flex gap-1 text-[#ffcc33] mb-4">★★★★★</div>
                     <h3 class="font-bold text-xl mb-3">Электромонтаж под ключ!</h3>
@@ -571,7 +834,7 @@
             const resultEl = document.getElementById('result');
             resultEl.innerHTML = `
                 <span class="block text-2xl text-gray-400 mb-2">Примерная стоимость (расходные материалы не входят в стоимость работ):</span>
-                <span class="text-6xl">${total.toLocaleString('ru-RU')} ₽</span>
+                <span class="block text-4xl sm:text-5xl md:text-6xl leading-tight">${total.toLocaleString('ru-RU')} ₽</span>
                 <p class="text-base mt-6 text-gray-400">Точная цена после бесплатных замеров и 3D-проекта</p>
             `;
         }
@@ -580,18 +843,33 @@
 
         
         // Мобильное меню
-        function toggleMobileMenu() {
+        function setMobileMenu(open) {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('hamburger').querySelector('i');
-            
-            menu.classList.toggle('hidden');
-            
-            if (!menu.classList.contains('hidden')) {
+            const hamburger = document.getElementById('hamburger');
+            const icon = hamburger.querySelector('i');
+
+            menu.classList.toggle('hidden', !open);
+            menu.setAttribute('aria-hidden', String(!open));
+            hamburger.setAttribute('aria-expanded', String(open));
+
+            if (open) {
                 icon.classList.replace('fa-bars', 'fa-times');
             } else {
                 icon.classList.replace('fa-times', 'fa-bars');
             }
         }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            setMobileMenu(menu.classList.contains('hidden'));
+        }
+
+        window.addEventListener('resize', () => {
+            const menu = document.getElementById('mobile-menu');
+            if (window.innerWidth >= 1200 && !menu.classList.contains('hidden')) {
+                setMobileMenu(false);
+            }
+        });
         
         // Скролл вверх
         function scrollToTop() {
